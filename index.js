@@ -43,7 +43,7 @@ var users = [
   
   function greetUser(user) {
     var greetingElement = document.createElement("h4");
-    greetingElement.textContent = "Welcome, " + user.email + "!";
+    greetingElement.textContent = "Welcome, " + user.firstName + " " + user.lastName + "!";
     dashboard.insertBefore(greetingElement, dashboard.firstChild).style.textAlign = "center";
   }
   
@@ -74,12 +74,17 @@ var users = [
     var formData = new FormData(event.target);
     var email = formData.get("email");
     var password = formData.get("password");
-    if(!email || !password){
-        alert("email and password must be required");
-        return;
+    var firstName = formData.get("firstName");
+    var lastName = formData.get("lastName");
+    var gender = formData.get("gender");
+  
+    if (!email || !password || !firstName || !lastName || !gender) {
+      alert("All fields are required.");
+      return;
     }
+  
     if (!users.find(function(user) { return user.email === email; })) {
-      users.push({ email: email, password: password, amount: 0 });
+      users.push({ email: email, password: password, firstName: firstName, lastName: lastName, gender: gender, amount: 0 });
       alert("User registered successfully!");
     } else {
       alert("User already exists");

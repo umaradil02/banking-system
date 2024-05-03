@@ -25,10 +25,21 @@
     <div class="register-container">
         <h2>register your account</h2>
         <form action="" id="register-form">
+            <label for="fname">first name</label>
+            <input type="text" name="firstName"  placeholder="enter your first name">
+            <label for="lname" class="lastName">last name</label>
+            <input type="text" name="lastName"  placeholder="enter your last name">
             <label for="email">EMAIL</label>
             <input type="email" name="email"  placeholder="enter your email">
             <label for="pass">PASSWORD</label>
             <input type="password" name="password" placeholder="create your password">
+            <div class="gender">
+            <label class="label">Gender</label>
+            <label for="male" class="label gender">Male:</label>
+            <input required id="male" value="male" type="radio" name="gender">
+            <label for="female" class="label gender">Female:</label>
+            <input required id="female" value="female" type="radio" name="gender">
+            </div>
             <button type="submit" class="sign-up">sign up</button>
         </form>
     </div>
