@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>banking system</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+    <div class="nav">
+        <button>Login</button>
+        <button>Register</button>
+    </div>
+    <div class="login-container">
+        <h2>login to your account</h2>
+        <form action="" id="login-form">
+            <label for="email">EMAIL</label>
+            <input type="email" name="email" placeholder="enter your email" >
+            <label for="pass">PASSWORD</label>
+            <input type="password" name="password" placeholder="enter your password">
+            <button type="submit" class="login">login</button>
+        </form>
+    </div>
+    <div class="register-container">
+        <h2>register your account</h2>
+        <form action="" id="register-form">
+            <label for="email">EMAIL</label>
+            <input type="email" name="email"  placeholder="enter your email">
+            <label for="pass">PASSWORD</label>
+            <input type="password" name="password" placeholder="create your password">
+            <button type="submit" class="sign-up">sign up</button>
+        </form>
+    </div>
+    <div class="dashboard">
+        <input type="number" min="1" id="amount">
+        <button id="wit">widthdraw</button>
+        <button  id="dep">deposit</button>
+        <button id="transfer">Transfer</button>
+        <form id="transfer-form" style="display: none;">
+          <input type="email" id="transfer-to" placeholder="Recipient's Email" required>
+          <input type="number" id="amount" placeholder="Amount" required>
+          <button type="submit">Transfer</button>
+        </form>
+    </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
