@@ -1,7 +1,7 @@
 var users = [
     {
-      email: "default@example.com",
-      password: "defaultpassword",
+      email: "adil@example.com",
+      password: "12345",
       amount: 10
     }
   ];
