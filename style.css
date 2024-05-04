@@ -15,10 +15,11 @@ body {
 .container {
     width: 500px;
     padding: 40px 20px;
-     margin:0 auto; 
-    margin-top: 50px; 
- background-image: linear-gradient( 179.7deg,  rgba(249,21,215,1) 1.1%, rgba(22,0,98,1) 99% );;
-     /* display: flex;
+    margin: 0 auto;
+    margin-top: 50px;
+    background-image: linear-gradient(179.7deg, rgba(249, 21, 215, 1) 1.1%, rgba(22, 0, 98, 1) 99%);
+    ;
+    /* display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -26,6 +27,7 @@ body {
     border-radius: 10px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+  
 
 .dashboard,
 .login-container {
@@ -38,7 +40,6 @@ body {
     align-items: center;
     flex-direction: column;
 }
-
 form label {
     font-size: 0.9rem;
     margin-left: 20px;
@@ -60,8 +61,43 @@ form label {
     font-weight: 900;
     cursor: pointer;
     border-bottom: 2px solid transparent;
+    -webkit-animation: tracking-in-contract-bck-top 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation: tracking-in-contract-bck-top 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    
 }
-
+@-webkit-keyframes tracking-in-contract-bck-top {
+    0% {
+      letter-spacing: 1em;
+      -webkit-transform: translateZ(400px) translateY(-300px);
+              transform: translateZ(400px) translateY(-300px);
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      -webkit-transform: translateZ(0) translateY(0);
+              transform: translateZ(0) translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes tracking-in-contract-bck-top {
+    0% {
+      letter-spacing: 1em;
+      -webkit-transform: translateZ(400px) translateY(-300px);
+              transform: translateZ(400px) translateY(-300px);
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      -webkit-transform: translateZ(0) translateY(0);
+              transform: translateZ(0) translateY(0);
+      opacity: 1;
+    }
+  }
+  
 .nav button:hover {
     color: rebeccapurple;
     border-color: black;
@@ -73,7 +109,7 @@ form label {
     padding: 10px 50px;
     margin-top: 25px;
     margin-bottom: 10px;
-    display:inline-block;
+    display: inline-block;
     background: rgb(97, 72, 207);
     background: radial-gradient(circle, rgb(225, 174, 238) 0%, rgba(148, 221, 233, 0.9304096638655462) 100%);
     border-color: darkgrey;
@@ -101,12 +137,14 @@ form label {
     border: none;
 
 }
-.gender{
+
+.gender {
     display: inline-flex;
     justify-content: space-between;
     align-items: flex-start;
 }
-.gender input{
+
+.gender input {
     margin-top: 3px;
 }
 
@@ -114,7 +152,46 @@ form label {
 .register-container h2 {
     text-align: center;
     text-transform: capitalize;
+    font-size: 1.9rem;
+    font-weight: 800;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    -webkit-animation: tracking-in-expand-fwd 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation: tracking-in-expand-fwd 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+
 }
+@-webkit-keyframes tracking-in-expand-fwd {
+    0% {
+      letter-spacing: -0.5em;
+      -webkit-transform: translateZ(-700px);
+              transform: translateZ(-700px);
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+      opacity: 1;
+    }
+  }
+  @keyframes tracking-in-expand-fwd {
+    0% {
+      letter-spacing: -0.5em;
+      -webkit-transform: translateZ(-700px);
+              transform: translateZ(-700px);
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+      opacity: 1;
+    }
+  }
+    
 
 #transfer-form {
     margin-top: 10px;
@@ -125,7 +202,7 @@ form label {
 }
 
 #transfer-form button {
-    margin:0 150px;
+    margin: 0 150px;
     padding: 10px 30px;
     margin-top: 25px;
     margin-bottom: 10px;
@@ -138,10 +215,12 @@ form label {
     font-weight: 700;
     color: rgba(31, 1, 163, 0.575);
 }
-.dashboard input{
+
+.dashboard input {
     margin-top: 20px;
     margin-left: 10px;
 }
+
 #wit,
 #dep,
 #transfer {
@@ -166,41 +245,48 @@ form label {
 
 @media screen and (max-width: 544px) {
     .container {
-      width: 450px;
+        width: 450px;
     }
-    .login-container input,
-.register-container input,
-.dashboard input {
-    max-width: 380px;
 
+    .login-container input,
+    .register-container input,
+    .dashboard input {
+        max-width: 380px;
+
+    }
 }
-  } 
+
 @media screen and (max-width: 444px) {
     .container {
-      width: 350px;
-      max-width: fit-content;
-      margin-top: 120px;
+        width: 350px;
+        max-width: fit-content;
+        margin-top: 120px;
     }
-    .login-container input,
-.register-container input,
-.dashboard input {
-    max-width: 250px;
 
+    .login-container input,
+    .register-container input,
+    .dashboard input {
+        max-width: 250px;
+
+    }
+
+    .sign-up {
+        margin-left: 80px;
+        padding: 10px 40px;
+    }
+
+    .login {
+        margin-left: 80px;
+
+    }
+
+    #transfer-form button,
+    #transfer {
+        margin-left: 80px;
+    }
+
+    #wit,
+    #dep {
+        margin-left: 10px;
+    }
 }
-.sign-up{
-    margin-left: 80px;
-    padding: 10px 40px;
-}
-.login {
-    margin-left: 80px;
-    
-}
-#transfer-form button,
-#transfer{
-    margin-left: 80px;
-}
-#wit,
-#dep{
-    margin-left: 10px;
-}
-  } 
