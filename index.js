@@ -1,3 +1,14 @@
+
+var popup = document.getElementById("popup");
+var popupText = document.getElementById("text");
+function openpopup(message){
+  popupText.textContent = message;
+  popup.classList.add("popup_show");
+}
+function closepopup(){
+  popup.classList.remove("popup_show");
+}
+
 var users = [
     {
       email: "adil@example.com",
@@ -42,9 +53,10 @@ var users = [
   }
   
   function greetUser(user) {
-    var greetingElement = document.createElement("h4");
-    greetingElement.textContent = "Welcome, " + user.firstName + " " + user.lastName + "!";
-    dashboard.insertBefore(greetingElement, dashboard.firstChild).style.textAlign = "center";
+    var greetingElement = document.getElementById("greeting");
+    greetingElement.textContent = user.firstName + " " + user.lastName + "!";
+    var amountDisplay = document.getElementById("amountDisplay");
+    amountDisplay.textContent = "Rs"+" " + user.amount.toFixed(2);
   }
   
   function loginUser(email, password) {
@@ -54,12 +66,32 @@ var users = [
     if (user) {
       isLoggedIn = true;
       currentUser = user;
+      CurentUserTOlocalstorage(currentUser);
       showDashboard();
       greetUser(currentUser);
     } else {
       alert("Invalid email or password");
     }
   }
+  function CurentUserTOlocalstorage(user){
+    localStorage.setItem('currentUser', JSON.stringify(user));
+  }
+  function CurrentUserFromLocalStroge(){
+    var userjson = localStorage.getItem('currentUser');
+    return userjson ? JSON.parse(userjson) : null;
+  }
+
+  function logout (){
+    isLoggedIn = false;
+    currentUser = null;
+    localStorage.removeItem('currentUser');
+    showLogin();
+  }
+  document.getElementById("logout").addEventListener("click", function (event){
+    event.preventDefault();
+    logout()
+  })
+
   
   loginDiv.querySelector("form").addEventListener("submit", function(event) {
     event.preventDefault();
@@ -79,15 +111,16 @@ var users = [
     var gender = formData.get("gender");
   
     if (!email || !password || !firstName || !lastName || !gender) {
-      alert("All fields are required.");
+      openpopup("All fields are required.");
       return;
     }
   
     if (!users.find(function(user) { return user.email === email; })) {
       users.push({ email: email, password: password, firstName: firstName, lastName: lastName, gender: gender, amount: 0 });
-      alert("User registered successfully!");
+      openpopup("your account has  succesfully created. Thanks!");
+      showLogin();
     } else {
-      alert("User already exists");
+      openpopup("User already exists");
     }
   });
   
@@ -116,7 +149,7 @@ var users = [
       return user.email === recipientEmail;
     });
     if (!recipient) {
-      alert("Recipient not found.");
+      openpopup("Recipient not found.");
       return;
     }
     var amount = parseFloat(document.querySelector("#amount").value);
@@ -125,12 +158,12 @@ var users = [
       if (amount <= currentUser.amount) {
         currentUser.amount -= amount;
         recipient.amount += amount;
-        alert("Transfer successful!");
+        openpopup("Transfer successful!");
       } else {
-        alert("Amount is greater than your current balance.");
+        openpopup("Amount is greater than your current balance.");
       }
     } else {
-      alert("Please enter a valid amount.");
+      openpopup("Please enter a valid amount.");
     }
   }
   
@@ -149,22 +182,37 @@ var users = [
     if (amount >= 1) {
       if (amount <= currentUser.amount) {
         currentUser.amount -= amount;
-        alert("Withdrawal has been made");
+        openpopup("Withdrawal of Rs" + amount.toFixed(2) + "has been made");
       } else {
-        alert("Amount is greater than your current balance");
+        openpopup("Amount is greater than your current balance");
       }
     } else {
-      alert("Please enter valid amount");
+      openpopup("Please enter valid amount");
     }
+    updateDisplay(currentUser);
   }
   
   function deposit(currentUser) {
     var amount = parseFloat(document.querySelector("#amount").value);
     if (amount >= 1) {
       currentUser.amount += amount;
-      alert("Amount has been deposited");
+      openpopup("Deposit of Rs" + amount.toFixed(2) + " has been made");
     } else {
-      alert("Please enter valid amount");
+      openpopup("Please enter valid amount");
     }
+    updateDisplay(currentUser);
   }
+  function updateDisplay(user){
+    var amountDisplay = document.getElementById("amountDisplay");
+    amountDisplay.textContent = "Rs" + user.amount.toFixed(2);
+
+  }
+  window.addEventListener('DOMContentLoaded', function(){
+    currentUser = CurrentUserFromLocalStroge();
+    if (currentUser) {
+      isLoggedIn = true;
+      showDashboard();
+      greetUser(currentUser);
+    }
+  })
   
